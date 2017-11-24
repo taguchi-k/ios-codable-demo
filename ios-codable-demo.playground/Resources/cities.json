@@ -1,0 +1,17 @@
+[
+ {
+ "code": 1,
+ "name": "狭山市",
+ "url": "https://www.city.sayama.saitama.jp/"
+ },
+ {
+ "code": 2,
+ "name": "所沢市",
+ "url": "https://www.city.tokorozawa.saitama.jp/"
+ },
+ {
+ "code": 3,
+ "name": "川越市",
+ "url": "https://www.city.kawagoe.saitama.jp/"
+ }
+]
