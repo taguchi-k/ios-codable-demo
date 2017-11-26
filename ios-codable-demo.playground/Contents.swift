@@ -142,3 +142,17 @@ extension City {
 let cities = City.creatCities()
 cities.forEach { print($0) }
 
+// MARK: - Encode
+
+// MARK: plist
+let encodePerson = Person(name: "名前", age: 20)
+let personData = try? PropertyListEncoder().encode(encodePerson)
+let decodePerson = try? PropertyListDecoder().decode(Person.self, from: personData!)
+print(decodePerson!)
+
+// MARK: json
+let parents = Child.Parents(father: "父", mother: "母")
+let encodeChild = Child(name: "こども", age: 1.2, parents: parents)
+let jsonData = try? JSONEncoder().encode(encodeChild)
+let decodeChild = try? JSONDecoder().decode(Child.self, from: jsonData!)
+print(decodeChild!)
