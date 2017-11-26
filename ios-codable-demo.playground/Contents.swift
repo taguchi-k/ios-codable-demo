@@ -2,7 +2,9 @@
 
 import UIKit
 
-// MARK: - plist
+// MARK: - Decode
+
+// MARK: plist
 struct Person: Codable {
     let name: String
     let age: Int
@@ -31,7 +33,7 @@ extension Person {
 let person = Person.createPerson()
 print(person)
 
-// MARK: - plist（配列）
+// MARK: plist（配列）
 struct Prefecture: Codable {
     let code: String
     let name: String
@@ -60,7 +62,7 @@ extension Prefecture {
 let prefectures = Prefecture.createPrefectures()
 prefectures.forEach { print($0) }
 
-// MARK: - json
+// MARK: json
 struct Child: Codable {
     let name: String
     let age: Double
@@ -89,11 +91,25 @@ extension Child {
 let child = Child.createChild()
 print(child)
 
-// MARK: - json（配列）
+// MARK: json（配列）
 struct City: Codable {
-    let code: Int
+    let cityCode: Int
     let name: String
     let url: URL
+
+
+    /// キーとプロパティ名が一致しない場合はCodingKeyを利用する
+    /// - case名: プロパティ名
+    /// - rawValue: キー名
+    ///
+    /// - cityCode: プロパティ: キャメルケース, キー: スネークケース
+    /// - name: 一致しているのでrawValueの定義不要
+    /// - url: 一致しているのでrawValueの定義不要
+    private enum CodingKeys: String, CodingKey {
+        case cityCode = "city_code"
+        case name
+        case url
+    }
 }
 
 extension City {
