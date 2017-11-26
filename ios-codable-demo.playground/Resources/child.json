@@ -1,4 +1,8 @@
 {
     "name": "foo",
-    "age": 1.5
+    "age": 1.5,
+    "parents": {
+        "father": "papa",
+        "mother": "mama"
+    }
 }

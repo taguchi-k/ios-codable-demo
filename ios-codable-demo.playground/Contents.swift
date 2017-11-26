@@ -66,6 +66,13 @@ prefectures.forEach { print($0) }
 struct Child: Codable {
     let name: String
     let age: Double
+    let parents: Parents
+
+    // ネストも可能
+    struct Parents: Codable {
+        let father: String
+        let mother: String
+    }
 }
 
 extension Child {
