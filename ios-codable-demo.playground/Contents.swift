@@ -146,13 +146,25 @@ cities.forEach { print($0) }
 
 // MARK: plist
 let encodePerson = Person(name: "名前", age: 20)
-let personData = try? PropertyListEncoder().encode(encodePerson)
-let decodePerson = try? PropertyListDecoder().decode(Person.self, from: personData!)
-print(decodePerson!)
+
+let plistEncoder = PropertyListEncoder()
+// .xmlを指定するとxml形式に整形される
+plistEncoder.outputFormat = .xml
+
+let personData = try? plistEncoder.encode(encodePerson)
+let personString = String(data: personData!, encoding: .utf8)
+print(personString!)
 
 // MARK: json
 let parents = Child.Parents(father: "父", mother: "母")
 let encodeChild = Child(name: "こども", age: 1.2, parents: parents)
-let jsonData = try? JSONEncoder().encode(encodeChild)
-let decodeChild = try? JSONDecoder().decode(Child.self, from: jsonData!)
-print(decodeChild!)
+
+let jsonEncoder = JSONEncoder()
+// .prettyPrintedを指定すると読みやすい形に整形される
+jsonEncoder.outputFormatting = .prettyPrinted
+// .sortedKeysを指定するとキー順にソートされる
+//jsonEncoder.outputFormatting = .sortedKeys
+
+let jsonData = try? jsonEncoder.encode(encodeChild)
+let jsonStirng = String(data: jsonData!, encoding: .utf8)
+print(jsonStirng!)
