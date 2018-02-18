@@ -12,7 +12,7 @@ struct Person: Codable {
 
 extension Person {
 
-    static func createPerson() -> Person {
+    static func makePerson() -> Person {
         guard
             let url = Bundle.main.url(forResource: "person", withExtension: "plist"),
             let data = try? Data(contentsOf: url) else {
@@ -30,7 +30,7 @@ extension Person {
     }
 }
 
-let person = Person.createPerson()
+let person = Person.makePerson()
 print(person)
 
 // MARK: plist（配列）
@@ -41,7 +41,7 @@ struct Prefecture: Codable {
 
 extension Prefecture {
 
-    static func createPrefectures() -> [Prefecture] {
+    static func makePrefectures() -> [Prefecture] {
         guard
             let url = Bundle.main.url(forResource: "prefectures", withExtension: "plist"),
             let data = try? Data(contentsOf: url) else {
@@ -59,7 +59,7 @@ extension Prefecture {
     }
 }
 
-let prefectures = Prefecture.createPrefectures()
+let prefectures = Prefecture.makePrefectures()
 prefectures.forEach { print($0) }
 
 // MARK: json
@@ -77,7 +77,7 @@ struct Child: Codable {
 
 extension Child {
 
-    static func createChild() -> Child {
+    static func makeChild() -> Child {
         guard
             let url = Bundle.main.url(forResource: "child", withExtension: "json"),
             let data = try? Data(contentsOf: url) else {
@@ -95,7 +95,7 @@ extension Child {
     }
 }
 
-let child = Child.createChild()
+let child = Child.makeChild()
 print(child)
 
 // MARK: json（配列）
@@ -121,7 +121,7 @@ struct City: Codable {
 
 extension City {
 
-    static func creatCities() -> [City] {
+    static func makeCities() -> [City] {
         guard
             let url = Bundle.main.url(forResource: "cities", withExtension: "json"),
             let data = try? Data(contentsOf: url) else {
@@ -139,7 +139,7 @@ extension City {
     }
 }
 
-let cities = City.creatCities()
+let cities = City.makeCities()
 cities.forEach { print($0) }
 
 // MARK: - Encode
